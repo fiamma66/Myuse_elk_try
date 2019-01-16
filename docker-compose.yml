@@ -10,6 +10,8 @@ services:
     container_name: elasticsearch
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      # create elasticsearch storage
+      - ./data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
