@@ -10,3 +10,5 @@ elasticsearch.url: "http://elasticsearch:9200"
 
 
 xpack.monitoring.ui.container.elasticsearch.enabled: true
+xpack.reporting.enabled: true
+
