@@ -7,6 +7,7 @@ services:
       context: ./elk/elasticsearch/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: elasticsearch
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
@@ -23,6 +24,7 @@ services:
       context: ./elk/logstash/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: logstash
     volumes:
       - ./elk/logstash/config/:/usr/share/logstash/config/:ro
     ports:
@@ -41,6 +43,7 @@ services:
       context: ./elk/kibana/
       args:
         ELK_VERSION: $ELK_VERSION
+    container_name: kibana
     volumes:
       - ./elk/kibana/config/:/usr/share/kibana/config:ro
     ports:
