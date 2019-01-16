@@ -1,0 +1,62 @@
+
+{
+  "trigger": {
+    "schedule": {
+      "interval": "10h" # set the time interval you like
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "search_type": "query_then_fetch",
+        "indices": [
+          "python-log*" # the idex you want to search
+        ],
+        "types": [],
+        "body": {
+          "query": { # notice below are fliter. for detail, go to official page
+            "bool": {
+              "must": [
+                {
+                  "query_string": {
+                    "query": "fields.levelname=ERROR" 
+                  }
+                },
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "now-5d" # timestamp use to watch our log
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "condition": {
+    "compare": {
+      "ctx.payload.hits.total": {
+        "gt": 1 # if any match, then do $actions
+      }
+    }
+  },
+  "actions": { #sending email to myself
+    "send_email": {
+      "email": {
+        "profile": "gmail",
+        "from": "fiamma0320@gmail.com",
+        "to": [
+          "fiamma0320@gmail.com"
+        ],
+        "subject": "Crawler has something happen, Check it ASAP",
+        "body": {
+          "text": "I find error! \n Blow are the detail! \n message : {{#ctx.payload.hits.hits}} {{_source.@message}} {{/ctx.payload.hits.hits}} \n Detail_URL : {{#ctx.payload.hits.hits}} {{_source.@fields.url}} {{/ctx.payload.hits.hits}}"
+        } # if error are happened multiple time in time interval
+          # the message you get will be hard to read because multiple match
+      }
+    }
+  }
+}
