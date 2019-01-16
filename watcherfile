@@ -47,9 +47,9 @@
     "send_email": {
       "email": {
         "profile": "gmail",
-        "from": "fiamma0320@gmail.com",
+        "from": "username@gmail.com",
         "to": [
-          "fiamma0320@gmail.com"
+          "username@gmail.com"
         ],
         "subject": "Crawler has something happen, Check it ASAP",
         "body": {
