@@ -4,7 +4,7 @@ services:
 
   elasticsearch:
     build:
-      context: elasticsearch/
+      context: ./elk/elasticsearch/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
@@ -20,7 +20,7 @@ services:
 
   logstash:
     build:
-      context: logstash/
+      context: ./elk/logstash/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
@@ -38,7 +38,7 @@ services:
 
   kibana:
     build:
-      context: kibana/
+      context: ./elk/kibana/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
