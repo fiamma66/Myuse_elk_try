@@ -10,10 +10,12 @@ use example from https://github.com/deviantony/docker-elk
 check docker-compose.yml 
 
 ```
-volumes:
+service:
+  elasticsearch: 
+    volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       # create elasticsearch storage
-      - ./data:/usr/share/elasticsearch/data
+      - ./data:/usr/share/elasticsearch/data      
 ```
 make a new storage folder you want
 
