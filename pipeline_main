@@ -1,0 +1,17 @@
+input {
+  tcp {
+    port => 5959 
+    codec => json#输入的格式为json格式
+  }
+}
+output {
+elasticsearch {
+    hosts => ["http://elasticsearch:9200"] #es的地址
+    index => "python-log-%{+YYYY.MM.dd}" #存入到es的索引名
+    user => elastic
+    password => changeme
+        }
+  stdout {
+    codec => rubydebug
+  }
+}
