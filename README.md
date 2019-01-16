@@ -58,3 +58,37 @@ pipeline ID  -> main
 檢查 logstash 是否 listening tcp 5959
 
 
+## 進階使用
+
+```/elk/elasticsearch/config/elasticsearch.yml```
+
+
+```
+gmail_account:
+        profile: gmail
+        smtp:
+            auth: true
+            starttls.enable: true
+            host: smtp.gmail.com
+            port: 587
+            user: username@gmail.com
+            password: userpassword
+            
+ ```
+ 
+ 輸入自己的Gmail 帳戶
+ 
+ 若遇到安全性問題
+ 
+ 參考官方文件
+ 
+ https://support.google.com/accounts/answer/6010255?hl=en
+ 
+ 
+ ### 設置 Watcher 
+ 
+ https://paper.dropbox.com/doc/E.L.K--AVsm2FAs5c4lmVI1U3uDaVUdAg-Dt5imJmuOdkiRTLgsy39I
+ 
+ 資料夾下 有Watcher 範例
+
+
