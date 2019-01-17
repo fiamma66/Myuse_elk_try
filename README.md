@@ -90,5 +90,21 @@ gmail_account:
  https://paper.dropbox.com/doc/E.L.K--AVsm2FAs5c4lmVI1U3uDaVUdAg-Dt5imJmuOdkiRTLgsy39I
  
  資料夾下 有Watcher 範例
+ 
+ 
+ 
+### python log example
 
+
+
+```
+
+logger = logging.getLogger('python-logstash-logger')
+logger.setLevel(logging.INFO)
+host_demo = "logstash"
+logger.addHandler(logstash.TCPLogstashHandler(host_demo,5959))
+
+```
+
+注意host_demo 使用的是 docker-compose service name
 
